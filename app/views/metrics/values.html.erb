@@ -1,0 +1,26 @@
+
+<h1><%= @metric['name'] %></h1>
+
+<ul>
+<% @users.each do |user| %>
+  <% value = user['metric_values'] %>
+  <% if value && value[0] %>
+    <% score = value[0]['value'].to_i %>
+  <% elsif %>
+    <% score = 0 %>
+  <% end %>
+
+  <% name = user['first_name']%> <%= user['last_name'] %>
+
+  <li>
+    <% if score > 0 %>
+      <%= link_to(:controller => 'metrics', :action => 'edit', :id => params[:id]) do %>
+        <%= name %>
+      <% end %>
+    <% elsif %>
+      <%= name %>
+    <% end %>
+  </li>
+
+<% end %>
+</ul>

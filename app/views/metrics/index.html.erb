@@ -1,0 +1,15 @@
+<h1>Metrics</h1>
+
+<ul>
+<% @metrics.each do |metric| %>
+  <li>
+    <% id = metric['href'].split('/').last %>
+    <%= link_to(:controller => 'metrics', :action => 'values', :id => id) do %>
+      <%= metric['name'] %>
+      <% if metric['currency_code'] %>
+        (<%= metric['currency_code'] %>)
+      <% end %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
